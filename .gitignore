@@ -1,0 +1,15 @@
+docs/summary_example.png
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+*.log
+data/
+results/

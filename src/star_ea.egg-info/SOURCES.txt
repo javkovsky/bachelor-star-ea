@@ -1,0 +1,17 @@
+README.md
+pyproject.toml
+src/star_ea/__init__.py
+src/star_ea/io.py
+src/star_ea/multifold.py
+src/star_ea/observables.py
+src/star_ea/plotting.py
+src/star_ea/simulation.py
+src/star_ea.egg-info/PKG-INFO
+src/star_ea.egg-info/SOURCES.txt
+src/star_ea.egg-info/dependency_links.txt
+src/star_ea.egg-info/requires.txt
+src/star_ea.egg-info/top_level.txt
+tests/test_io.py
+tests/test_multifold.py
+tests/test_observables.py
+tests/test_simulation.py

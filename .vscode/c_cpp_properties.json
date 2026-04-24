@@ -4,7 +4,7 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/home/javkovsky/anaconda3/envs/pythia8-env/include/**"
+                "/home/javkovsky/anaconda3/envs/star-bachelor-env/include/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

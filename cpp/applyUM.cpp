@@ -7,7 +7,7 @@
 TH2D* applyUM(TH2D* histoMeas, TMatrixD* UM) {
 
     // clone the original histogram to acquire its binning structure
-    TH2D* histoUnf = (TH2D*)histoMeas -> Clone(""); // (TH2D*) tells C++ to treat the cloned object as a TH2D
+    TH2D* histoUnf = (TH2D*)histoMeas -> Clone("histoUnf_clone2"); // (TH2D*) tells C++ to treat the cloned object as a TH2D
     histoUnf -> Reset(); // clear the data to keep only the bin structure
     histoUnf -> Sumw2(); // tell the empty histogram to allocate memory for errors
 

@@ -5,11 +5,11 @@
 #include <functional> // needed to hash the eventIDs
 
 // --------------
-// TPC ACCEPTANCE
+// TPC EFFICIENCY
 // --------------
 
-// define the acceptance function of TPC
-double TPCacceptance(double pT) {
+// define the efficiency function of TPC
+double TPCefficiency(double pT) {
     return 0.8;
 }
 
@@ -25,7 +25,7 @@ ROOT::RVec<int> TPCmask(size_t nParticles, const ROOT::RVec<double>& pTEvent, un
     
     // particle loop
     for (size_t i = 0; i < nParticles; i++) {
-        if (dist(generator) < TPCacceptance(pTEvent[i])) { // if the random number dist(generator) is less than TPC's acceptance, we accept the particle
+        if (dist(generator) < TPCefficiency(pTEvent[i])) { // if the random number dist(generator) is less than TPC's efficiency, we accept the particle
             mask[i] = 1;
         }
         else { // otherwise, we reject the particle
@@ -37,11 +37,11 @@ ROOT::RVec<int> TPCmask(size_t nParticles, const ROOT::RVec<double>& pTEvent, un
 }
 
 // ----------------
-// + TOF ACCEPTANCE
+// + TOF EFFICIENCY
 // ----------------
 
-// define the acceptance function of TOF
-double TOFacceptance(double pT) {
+// define the efficiency function of TOF
+double TOFefficiency(double pT) {
     return 0.6;
 }
 
@@ -50,6 +50,7 @@ ROOT::RVec<int> TPCandTOFmask(size_t nParticles,
                               const ROOT::RVec<double>& pTEvent,
                               unsigned long long eventID, 
                               const ROOT::RVec<int>& TPCaccepted) {
+
     // random number generator setup
     std::mt19937 generator(std::hash<unsigned long long>{}(eventID + 54321)); // std::mt19937 is a random number generator ("Mersenne Twister") with seed 54321+eventID 
                                                                               // we hash the eventId to ensure a unique, well-distributed seed for the Mersenne Twister as it produces correlated numbers when fed sequential seeds
@@ -59,7 +60,7 @@ ROOT::RVec<int> TPCandTOFmask(size_t nParticles,
     
     // particle loop
     for (size_t i = 0; i < nParticles; i++) {
-        if (dist(generator) < TOFacceptance(pTEvent[i]) && TPCaccepted[i] == 1) { // if the particle was accepted by TPC and also a random number dist(generator) is less than TOF's acceptance, we accept the particle
+        if (dist(generator) < TOFefficiency(pTEvent[i]) && TPCaccepted[i] == 1) { // if the particle was accepted by TPC and also a random number dist(generator) is less than TOF's efficiency, we accept the particle
                                                                                   // dist(generator) MUST be on the left side so it evaluates first, guaranteeing the generator ticks exactly once per particle to maintain reproducibility
             mask[i] = 1;
         }
@@ -70,5 +71,3 @@ ROOT::RVec<int> TPCandTOFmask(size_t nParticles,
 
     return mask;
 }
-
-// asi by se jeste dalo zkombinovat do jedne funkce a jednoho for loopu, dale mi Gemini nabizi zbavit se for loopu a misto toho pouzit vektorizovane operace pomoci RVec

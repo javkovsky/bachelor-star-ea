@@ -6,7 +6,7 @@
 #include <cmath>
 
 // define the function for event generation
-void generateEvents(int nEvents, int seed, std::string outFileName) {
+void generateEvents(int nEvents, int nEventInit, int seed, std::string outFileName) {
 
     // -------------
     // PYTHIA8 setup
@@ -18,14 +18,14 @@ void generateEvents(int nEvents, int seed, std::string outFileName) {
     pythia.readString("Beams:idB = 2212"); // proton
     pythia.readString("Beams:eCM = 510."); // collision energy in GeV
 
-    pythia.readString("hardQCD:all = on"); // enable hard QCD processes
-    pythia.readString("PhaseSpace:pTHatMin = 20."); // minimum pT of scattered partons in GeV
+    pythia.readString("Tune:pp = 33"); // the Detroit tune for RHIC
+
+    pythia.readString("SoftQCD:nonDiffractive = on"); // generate minimum bias events
+    
     pythia.readString("PartonLevel:MPI = on"); // enable multi-parton interactions
     pythia.readString("PartonLevel:ISR = on"); // enable initial state radiation
     pythia.readString("PartonLevel:FSR = on"); // enable final state radiation
     pythia.readString("HadronLevel:Decay = on"); // enable decay of hadronization products
-
-    pythia.readString("Tune:pp = 33"); // the Detroit tune for RHIC
 
     pythia.readString("Random:setSeed = on"); // enable random seed setting
     pythia.readString("Random:seed = " + std::to_string(seed)); // set random seed to 0 (random every time) or to a specific value for reproducibility
@@ -69,7 +69,7 @@ void generateEvents(int nEvents, int seed, std::string outFileName) {
         mass.clear();
 
         // store the event ID
-        eventID = iEvent;
+        eventID = iEvent + nEventInit;
 
         // PARTICLE LOOP
         for (size_t iParticle = 0; iParticle < pythia.event.size(); iParticle++) {

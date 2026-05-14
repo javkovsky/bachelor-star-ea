@@ -23,8 +23,9 @@ double etaSpread(double eta, double mass) {
 }
 
 // define the smearing function
-ROOT::RVec<ROOT::Math::PtEtaPhiMVector> smearing(const ROOT::RVec<ROOT::Math::PtEtaPhiMVector>& tracks, unsigned long long eventID) { // by using unsigned, we promise the compiler that eventID will not be a negative number saving the sign bit, which can now be used to store a larger number
-                                                                                                                                // the long long type stands for a massive 64-bit integer to avoid overflow
+ROOT::RVec<ROOT::Math::PtEtaPhiMVector> smearing(const ROOT::RVec<ROOT::Math::PtEtaPhiMVector>& tracks, 
+                                                 unsigned long long eventID) { // by using unsigned, we promise the compiler that eventID will not be a negative number saving the sign bit, which can now be used to store a larger number
+                                                                               // the long long type stands for a massive 64-bit integer to avoid overflow
 
     // random number generator setup
     std::mt19937 generator(std::hash<unsigned long long>{}(eventID + 98765)); // std::mt19937 is a random number generator ("Mersenne Twister") with seed 98765+eventID 

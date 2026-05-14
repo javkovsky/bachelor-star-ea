@@ -15,7 +15,7 @@ cp -r "$projectDir/cpp/" "$TMPDIR/event_simulation/"
 cd "$TMPDIR/event_simulation/" || exit 1 # the script fails if it cannot enter the temporary directory
 python3 pythia8_generate-tree.py
 
-# remove the events
+# remove the events*.root files without deleting the smeared event files
 find "$TMPDIR/event_simulation/data/" -type f -name "events*.root" ! -name "*_smeared.root" -delete
 
 # copy the generated smeared events back into the project directory (the files also include true events)

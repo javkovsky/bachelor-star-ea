@@ -1,0 +1,10 @@
+name: star-bachelor-env
+channels:
+  - defaults
+dependencies:
+  - matplotlib
+  - root
+  - pythia8
+  - numpy
+  - roounfold
+  - python=3.11

@@ -7,7 +7,7 @@
 // define the spread functions
 double pTSpread(double pT, double mass) {
 
-    // fit parameters from Subhadip acquired by averaging corresponding parameters for pi- and pi+
+    // fit parameters from plots by STAR collaborator Subhadip Pal acquired by averaging corresponding parameters for pi- and pi+
     double c = 3793.0 * TMath::Power(10, -6);
     double d = 8726.5 * TMath::Power(10, -6);
 

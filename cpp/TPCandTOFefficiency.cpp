@@ -2,6 +2,7 @@
 #include <random>
 #include <ROOT/RVec.hxx> // ROOT's fast array of numbers
 #include <Math/Vector4D.h> // ROOT's 4-vectors -- we do not use it in this script, however it is used in PyROOT in Jupyter Notebook
+#include <TMath.h> // ROOT's TMath
 #include <functional> // needed to hash the eventIDs
 
 // --------------
@@ -42,7 +43,13 @@ ROOT::RVec<int> TPCmask(size_t nParticles, const ROOT::RVec<double>& pTEvent, un
 
 // define the efficiency function of TOF
 double TOFefficiency(double pT) {
-    return 0.6;
+
+    // fit parameters from TPC-TOF matching efficiency plot provided by STAR collaborator Oliver Matonoha
+    double c0 = 0.675;
+    double c1 = 0.3387;
+    double c2 = 0.6878;
+
+    return c0 * (1 - TMath::Exp(-TMath::Power(pT/c1, c2)));
 }
 
 // define a function which gives us a mask telling us which particles were recorded by both TPC and TOF

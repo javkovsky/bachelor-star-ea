@@ -4,9 +4,10 @@
 source "$HOME/thisroot2026.sh"
 
 # set the path to the cloned GitHub repository -- CHANGE THIS according to YOUR path to the cloned repository
-projectDir = "$HOME/bachelor-star-ea/"
+projectDir="$HOME/bachelor-star-ea/"
 
 # copy the necessary file onto the cluster node -- ensure that YOUR batch system has the $TMPDIR variable
+mkdir "$TMPDIR/event_simulation/"
 cp "$projectDir/pythia8_generate-tree.py" "$TMPDIR/event_simulation/pythia8_generate-tree.py"
 cp -r "$projectDir/cpp/" "$TMPDIR/event_simulation/"
 

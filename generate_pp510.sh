@@ -13,7 +13,7 @@ cp -r "$projectDir/cpp/" "$TMPDIR/event_simulation/"
 
 # enter the directory on the node and launch the data generation script
 cd "$TMPDIR/event_simulation/" || exit 1 # the script fails if it cannot enter the temporary directory
-python3 pythia8_generate-tree.py
+python3 pythia8_generate-tree.py --seed 22 --nEvents 100000
 
 # remove the events*.root files without deleting the smeared event files
 find "$TMPDIR/event_simulation/data/" -type f -name "events*.root" ! -name "*_smeared.root" -delete

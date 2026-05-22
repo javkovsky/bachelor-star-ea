@@ -20,5 +20,5 @@ cd "$TMPDIR/event_analysis/" || exit 1 # the script fails if it cannot enter the
 python3 plot-ea.py --seed $seed
 
 # copy the created graphs and the .root file with distributions for unfolding back into the project directory
-cp -r "$TMPDIR/event_analysis/data/"* "$projectDir/data/"
+cp -r "$TMPDIR/event_analysis/data/$seed/events$seed"_plots.root "$projectDir/data/$seed/"
 cp -r "$TMPDIR/event_analysis/img/" "$projectDir/"  

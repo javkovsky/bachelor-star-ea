@@ -21,4 +21,5 @@ python3 plot-ea.py --seed $seed
 
 # copy the created graphs and the .root file with distributions for unfolding back into the project directory
 cp "$TMPDIR/event_analysis/data/$seed/events$seed"_plots.root "$projectDir/data/$seed/"
+cp "$TMPDIR/event_analysis/data/$seed/observables$seed".root "$projectDir/data/$seed/"
 cp -r "$TMPDIR/event_analysis/img/" "$projectDir/"  

@@ -7,9 +7,6 @@ double calculateS0pT1(const ROOT::RVec<double>& uxEvent, // const is a safety lo
                       const ROOT::RVec<double>& uyEvent, // & tells C++ to use the original data rather than making copies in RAM
                       int NchEvent) {
 
-    // we define spherocity only for events true and smeared multiplicity > 10
-    if (NchEvent <= 10) return -1.0;
-
     double minVal = 999999.0; // set minimum value to a large number, so that it gets overwritten
     
     // loop over particles in an event -- loop over potential minimization axes \vec{n}
@@ -38,9 +35,6 @@ double calculateS0(const ROOT::RVec<double>& uxEvent, // const is a safety lock 
                    const ROOT::RVec<double>& pyEvent, 
                    const ROOT::RVec<double>& pTEvent,
                    int NchEvent) {
-
-    // we define spherocity only for events true and smeared multiplicity > 10
-    if (NchEvent <= 10) return -1.0;
 
     double minVal = 999999.0; // set minimum value to a large number, so that it gets overwritten
     double pTSum = 0; // create and set the sum of absolute values of pT equal to zero

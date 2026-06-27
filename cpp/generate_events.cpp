@@ -20,7 +20,12 @@ void generateEvents(int nEvents, int nEventInit, int seed, std::string outFileNa
 
     pythia.readString("Tune:pp = 33"); // the Detroit tune for RHIC
 
-    pythia.readString("SoftQCD:nonDiffractive = on"); // generate minimum bias events
+    // generate minimum bias events
+    pythia.readString("SoftQCD:nonDiffractive = on"); 
+
+    // for generation of a biased dataset for MultiFold neural network training, uncomment the lines below and comment the line above (SoftQCD:nonDiffractive = on)
+    // pythia.readString("HardQCD:all = on");
+    // pythia.readString("PhaseSpace:pTHatMin = 20.");
     
     pythia.readString("PartonLevel:MPI = on"); // enable multi-parton interactions
     pythia.readString("PartonLevel:ISR = on"); // enable initial state radiation

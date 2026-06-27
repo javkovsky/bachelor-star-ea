@@ -35,7 +35,8 @@ For running generation and analysis on the Sunrise cluster at FNSPE (CTU in Prag
 ## Instructions
 1. **Data Generation:** Run `pythia8_generate-tree.ipynb` (or execute locally/on a cluster via `generate_pp510.sh`) to generate the true collision datasets and simulate the STAR detector response.
 2. **Event Activity Analysis:** Process the datasets by running `plot-ea.ipynb` (or `analyse_pp510.sh`). This constructs multiplicity and transverse spherocity observables and also 2D and 3D response matrices.
-3. **Unfolding:** Execute `unfolding-Bayes-ea.ipynb` using two different datasets (a training set and a smeared set). The notebook generates validation plots and closure tests comparing the true datasets with the RooUnfold Bayesian-corrected datasets.
+3. **Bayesian Unfolding:** Execute `unfolding-Bayes-ea.ipynb` using two different datasets (a training set and a smeared set). The notebook generates validation plots and closure tests comparing the true datasets with the RooUnfold Bayesian-corrected datasets.
+4. **MultiFold:** TO DO This pipeline runs natively on CPU or GPU. If you are running on an NVIDIA GPU and encounter XLA libdevice warnings, you can optionally accelerate training by running: `conda install -c nvidia cuda-nvcc`.
 
 ## Gitignore Configuration
 The `.gitignore` explicitly prevents uploading large local `.root` data files, generated `.pdf` figures, and local `.vscode` properties JSONs to version control.

@@ -1,4 +1,5 @@
 *.root
 *.pdf
+*.png
 .vscode/*
 __pycache__/*
